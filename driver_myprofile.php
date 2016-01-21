@@ -30,20 +30,35 @@
                 <img border="0" src="./img/icon-profile.png" alt="Profile Picture" width="304" height="228" /><br>
                 <form method="post" action="./updateuser">
                     <lable>Name</lable><br><br><br><br>
-                    <input type="text" id="firstName" name="firstName" value="Nimal">
-                    <input type="text" id="lastName" name="lastName" value="Perera">
+                    <input type="text" id="firstName" name="firstName" value="" readonly>
+                    <input type="text" id="lastName" name="lastName" value="" readonly>
                     <br><br><br><br>
 
                     <lable>E-mail Address</lable><br><br><br><br>
-                    <input type="email" id="email" name="email" value="nimal@gmail.com"><br>
+                    <input type="email" id="email" name="email" value="" readonly><br>
                     <br>
-                    <label id="discription"></label>
+                    <br>
+                    <lable>About Me</lable>
+                    <br>
+                    <input type="text" style="width:100%;height:100%"id="discription" readonly>
+                    <br>
+                    <lable>Vehicle Type</lable>
+                    <br>
+                    <input type="text" style="width:100%;height:100%"id="vehicleType" readonly>
+                    <br>
+                    <lable>Vehicle Model</lable>
+                    <br>
+                    <input type="text" style="width:100%;height:100%"id="vehicleModel" readonly>
                 </form>
 			</div> 
 		</div>
         <?php  
         	if(isset($_GET['contactNo'])){
         		echo "<script>var contactNo=".$_GET['contactNo'].'</script>';
+                session_start();
+                if(isset($_SESSION['contactNo'])){
+                    $_SESSION['contactNo']=$_GET['contactNo'];
+                }
         	}
         ?>
         <script src="js/jquery-1.12.0.min.js"></script>
@@ -70,10 +85,16 @@
                     {
                         contactNo:contactNo
                     },
-                  dataType: "html"
+                  dataType: "json"
                 }).done(function(data){
                   $.each( data, function( key, value ) {
-                  		
+                  		$('#firstName').val(value.firstName);
+                  		$('#lastName').val(value.lastName);
+                  		$('#email').val(value.email);
+                  		$('#discription').val(value.discription);
+                  		$('#vehicleType').val(value.vehicleType);
+                  		$('#vehicleModel').val(value.vehicleModel);
+
             		});
                 });
             }

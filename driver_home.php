@@ -53,7 +53,13 @@
                 <br> 
             	</div>
 		</div>
-                
+         <?php  
+        		session_start();
+        		if(isset($_SESSION['contactNo'])){
+	        		$contactNo=$_SESSION['contactNo'];
+        		}
+				echo "<script>var contactNo=".$contactNo.'</script>';
+        ?>
         
 		<script src="js/classie.js"></script>
 		<script>
