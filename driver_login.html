@@ -53,7 +53,7 @@
                   dataType: "html"
                 }).done(function(data){
                     if(data=="1"){
-                        $(location).attr('href', './driver_home.html')
+                        $(location).attr('href', './driver_home.html?contactNo='.contactNo);
                     }else if(data=="0"){
                         $('#wrongPwd').show();
                     }else if(data=="-1"){
