@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+        <link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+        <link rel="stylesheet" type="text/css" href="css/component_button.css" />
+	   
+    </head>
+	<body class="spmenu-push">
+        <div id="header">
+            <div class="main" style="position: relative;"> 
+                <button id="menuButton"  class="btn btn-1 btn-1a" style="position: absolute; left: -40px; top: -20px;"><img src="./img/menu.png"></button>
+                <h1>Support</h1>
+            </div>
+            
+        </div>
+		<nav class="spmenu spmenu-vertical spmenu-left" id="spmenu-s1">
+			<h3>Menu</h3>
+            <a href='passenger_home.html'>Home</a>
+			<a href='passenger_myprofile.html'>Profile</a>
+			<a href='passenger_favouritedrivers.html'>Favourite Drivers</a>
+			<a href='passenger_mytrips.html'>My Trips</a>
+			<a href='passenger_support.html'>Support</a>
+			<a href='passenger_aboutus.html'>About Us</a>
+
+		</nav>
+		<div class="container">
+			<div class="main">
+				<p>Dear customer, <br> if you have any inquires, <br> comments or complains about taximate <br> feel free to contact us via</p>
+                 <br>
+ 				<button class="btn btn-6 btn-6l" id="callButton">Call</button>
+                 <button class="btn btn-6 btn-6l" id="emailButton">Email</button>
+                 <br><br>
+                 <p>Thank you</p>
+                 <p><u>Team TaxiMate</u></p>
+			</div>
+		</div>
+        
+		<script src="js/classie.js"></script>
+		<script>
+			var menuLeft = document.getElementById( 'spmenu-s1' ),
+				menuButton = document.getElementById( 'menuButton' ),
+				body = document.body;
+
+			menuButton.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'spmenu-push-toright' );
+				classie.toggle( menuLeft, 'spmenu-open' );
+				disableOther( 'menuButton' );
+			};
+		</script>
+	</body>
+</html>

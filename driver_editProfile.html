@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+        <link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+        <link rel="stylesheet" type="text/css" href="css/component_button.css" />
+	   
+    </head>
+	<body class="spmenu-push"  style="width: 140%; height:140%">
+        <div id="header">
+            <div class="main" style="position: relative;"> 
+                <button id="menuButton"  class="btn btn-1 btn-1a" style="position: absolute; left: -40px; top: -20px;"><img src="./img/menu.png"></button>
+                <h>Edit Profile</h>
+                <button id="saveButton"  class="btn btn-1 btn-1a" style="position: absolute; left: 800px; top: -20px;">Save</button>   
+            </div>    
+        </div>
+                
+		<nav class="spmenu spmenu-vertical spmenu-left" id="spmenu-s1">
+			<h3>Menu</h3>
+			<a href="driver_home.html">Home</a>
+			<a href="driver_myprofile.html">Profile</a>
+			<a href="driver_ratings.html">Ratings and Badges</a>
+			<a href="driver_myrates.html">My Rates</a>
+			<a href="driver_mytrips.html">My Trips</a>
+			<a href="driver_support.html">Support</a>
+			<a href="driver_aboutus.html">About Us</a>
+		</nav>
+		<div class="container" style="position: absolute; left: 100px;">
+                <h2>My details</h2>
+                <img border="0" src="./img/icon-profile.png" alt="Profile Picture" width="304" height="228" /><br>
+                <form method="post" action="./updateuser">
+                    
+                    <lable><img border="0" src="./img/personBlue.png" alt="Name Icon" width="16" height="16">Name</lable><br><br><br><br>
+                    <input type="text" name="firstName">
+                    <input type="text" name="lastName">
+                    <br><br><br><br>
+                    
+                    <lable><img border="0" src="./img/emailBlue.png" alt="Email Icon" width="16" height="16">
+E-mail Address</lable><br><br><br><br>
+                    <input type="text" name="email"><br><br>
+                    <br><br>
+                    <lable><img border="0" src="./img/NICblue.png" alt="NIC Icon" width="16" height="16">NIC</lable><br><br><br><br>
+                    <input type="number" name="nic"><br><br>
+                    <br><br>
+                    <lable>Login Details</lable>
+                    <br><br><br><br>
+                    <h2><img border="0" src="./img/mobileBlue.png" alt="Phone number Icon" width="16" height="16">Phone number</h2><br><br>
+                    <br><br><input type="number" name="phone number"><br><br>
+                    
+                    <button class="btn btn-6 btn-6l" id="changePassword"  onclick="location.href='passenger_change_password.html';">Change Password</button>
+                    <h2>Vehicle Information</h2>
+                    <h3>Vehicle Type</h3>
+                    <button id="carButton"  class="btn btn-1 btn-1a"><img src="./img/carBlue.png" width="60" height="60"></button>
+                     <button id="tuktukButton"  class="btn btn-1 btn-1a"><img src="./img/TukTukBlue.png" width="60" height="60"></button>
+                     <button id="vanButton"  class="btn btn-1 btn-1a"><img src="./img/VanBlue.png" width="60" height="60"></button>
+                     
+                       
+                     <h3>Vehicle Model</h3>
+                     <input type="text"  name="Vehicle Model"><br>
+                    
+                     <h3>Description</h3>
+                     <input type="text" name="description">
+                    
+                </form>
+			</div> 
+		</div>
+        
+		<script src="js/classie.js"></script>
+		<script>
+			var menuLeft = document.getElementById( 'spmenu-s1' ),
+				menuButton = document.getElementById( 'menuButton' ),
+				body = document.body;
+
+			menuButton.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'spmenu-push-toright' );
+				classie.toggle( menuLeft, 'spmenu-open' );
+				disableOther( 'menuButton' );
+			};
+		</script>
+	</body>
+</html>

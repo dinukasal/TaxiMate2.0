@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+        <link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+        <link rel="stylesheet" type="text/css" href="css/component_button.css" />
+	   
+    </head>
+	<body class="spmenu-push"  style="width: 140%; height:140%">
+        <div id="header">
+            <div class="main" style="position: relative;"> 
+                <button id="menuButton"  class="btn btn-1 btn-1a" style="position: absolute; left: -40px; top: -20px;"><img src="./img/menu.png"></button>
+                <h1>About Us</h1>
+            </div>
+            
+        </div>
+		<nav class="spmenu spmenu-vertical spmenu-left" id="spmenu-s1">
+			<h3>Menu</h3>
+            <a href='passenger_home.html'>Home</a>
+			<a href='passenger_myprofile.html'>Profile</a>
+			<a href='passenger_favouritedrivers.html'>Favourite Drivers</a>
+			<a href='passenger_mytrips.html'>My Trips</a>
+			<a href='passenger_support.html'>Support</a>
+			<a href='passenger_aboutus.html'>About Us</a>
+		</nav>
+		<div class="container">
+			<div class="main">
+                <p>Taxi mate is a taxi service which provides transportation via cars, Threewheelers and Vans as requested by the customer through a mobile or a web application.The customer can contact the driver directly through the application and reserve a trip. The fair for the trip should be given to the driver in person not via paypal or any other e-payments.</p>
+                 <p><u>Taxi Mate HQ</u></p>
+                 <p>Department of Computer science engineering,</p>
+                 <p>University of Moratuwa,</p>
+                 <p>Katubedda,</p>
+                 <br>
+                 <lable>Support line for passengers:  <u>0717096062</u></lable>
+                 <br>
+                 <lable>Support line for drivers:  <u>0778536388 </u></lable>
+                 <br><br>
+                 <button class="btn btn-6 btn-6l" id="sharebutton"><img src="./img/share.png"></button>
+                 <button class="btn btn-6 btn-6l" id="likebutton"><img src="./img/likes.png"  </button>
+                <button class="btn btn-6 btn-6l" id="ratesbutton"><img src="./img/ratings.png" </button>
+
+				
+			</div>
+		</div>
+        
+		<script src="js/classie.js"></script>
+		<script>
+			var menuLeft = document.getElementById( 'spmenu-s1' ),
+				menuButton = document.getElementById( 'menuButton' ),
+				body = document.body;
+
+			menuButton.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'spmenu-push-toright' );
+				classie.toggle( menuLeft, 'spmenu-open' );
+				disableOther( 'menuButton' );
+			};
+		</script>
+	</body>
+</html>

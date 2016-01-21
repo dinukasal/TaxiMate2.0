@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+        <link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+        <link rel="stylesheet" type="text/css" href="css/component_button.css" />
+	   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	</head>
+	<body class="spmenu-push" style="width: 140%; height:140%">
+        <div id="header">
+            <div class="main" style="position: relative;"> 
+                <button id="menuButton"  class="btn btn-1 btn-1a" style="position: absolute; left: -40px; top: -20px;"><img src="./img/menu.png"></button>
+                <h1>Book a Taxi</h1>
+            </div>
+            
+        </div>
+		<nav class="spmenu spmenu-vertical spmenu-left" id="spmenu-s1">
+			<h3>Menu</h3>
+            <a href='passenger_home.html'>Home</a>
+			<a href='passenger_myprofile.html'>Profile</a>
+			<a href='passenger_favouritedrivers.html'>Favourite Drivers</a>
+			<a href='passenger_mytrips.html'>My Trips</a>
+			<a href='passenger_support.html'>Support</a>
+			<a href='passenger_aboutus.html'>About Us</a>
+
+		</nav>
+		<div class="container">
+			<div class="main">
+				
+                
+                <lable>Pick a Date</lable><br><br>
+                <input type="date" id="datepicker" name="date">
+                
+                <br><br>
+                
+                <lable>Pick a Time</lable><br><br>
+                <input type="time" id="timepicker" name="time">
+                
+                <br><br>
+                
+                <button class="btn btn-6 btn-6l" id="Book">Book Now</button>
+              
+                
+			</div>
+		</div>
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<script src="js/classie.js"></script>
+		
+        <script>
+            $(function() {
+		      $( "#datepicker" ).datepicker();
+	       });
+			var menuLeft = document.getElementById( 'spmenu-s1' ),
+				menuButton = document.getElementById( 'menuButton' ),
+				body = document.body;
+
+			menuButton.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'spmenu-push-toright' );
+				classie.toggle( menuLeft, 'spmenu-open' );
+				disableOther( 'menuButton' );
+			};
+		</script>
+	</body>
+</html>

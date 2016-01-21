@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+        <link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+        <link rel="stylesheet" type="text/css" href="css/component_button.css" />
+	   
+    </head>
+	<body class="spmenu-push" style="width: 140%; height:140%">
+        <div id="header">
+            <div class="main" style="position: relative;"> 
+                <button id="menuButton"  class="btn btn-1 btn-1a" style="position: absolute; left: -40px; top: -20px;"><img src="./img/menu.png"></button>
+                <h1>Ratings and Badges</h1>   
+            </div>    
+        </div>
+                
+		<nav class="spmenu spmenu-vertical spmenu-left" id="spmenu-s1">
+			<h3>Menu</h3>
+			<a href="driver_home.html">Home</a>
+			<a href="driver_myprofile.html">Profile</a>
+			<a href="driver_ratings.html">Ratings and Badges</a>
+			<a href="driver_myrates.html">My Rates</a>
+			<a href="driver_mytrips.html">My Trips</a>
+			<a href="driver_support.html">Support</a>
+			<a href="driver_aboutus.html">About Us</a>
+		</nav>
+		<div class="container" style="position: absolute; left: 100px;">
+            <h1>My Ratings</h1>
+            <lable>Current   :  </lable><lable><u>8.0</u> </lable><br><br>
+            <lable>Last Month:  </lable><lable><u>9.0</u> </lable><br><br>
+            <div id="chart_div" style="width: 400px;height: 300px; " ></div>
+            <br><br>
+            <h1>My Badges</h1>
+            <br><br><br><br><br><br><br>
+            <lable>You are so close to archieve</lable>
+            <div id="chart_div" style="width: 400px;height: 300px; " ></div>
+            <br><br>
+            
+        </div> 
+        
+		
+        
+		<script src="js/classie.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script>
+			var menuLeft = document.getElementById( 'spmenu-s1' ),
+				menuButton = document.getElementById( 'menuButton' ),
+				body = document.body;
+
+			menuButton.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'spmenu-push-toright' );
+				classie.toggle( menuLeft, 'spmenu-open' );
+				disableOther( 'menuButton' );
+			};
+            
+            google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(drawBasic);
+
+        function drawBasic() {
+
+              var data = new google.visualization.DataTable();
+              data.addColumn('number', 'X');
+              data.addColumn('number', '');
+
+              data.addRows([
+                [1, 5],   [2, 8],  [3, 9],  [4, 8]
+              ]);
+
+              var options = {
+                hAxis: {
+                  title: ''
+                },
+                vAxis: {
+                  title: 'Rating'
+                }
+              };
+
+              var chart = new       google.visualization.LineChart(document.getElementById('chart_div'));
+
+              chart.draw(data, options);
+            }
+            
+		</script>
+	</body>
+</html>

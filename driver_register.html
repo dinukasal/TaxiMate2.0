@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+        <link rel="stylesheet" type="text/css" href="css/component_button.css" />
+        
+	</head>
+	<body  style="width: 140%; height:140%">
+		<div id="header">
+            <h>Driver Register</h>
+        </div>
+        <div class="container">
+			<div class="main" >
+                
+                <lable>Name</lable>
+
+                <br><br><br><br>
+                <input type="text" name="firstName">
+                <input type="text" name="lastName">
+				<br><br><br><br>
+                <lable>NIC</lable>
+                <br><br><br><br>
+                <input type="text" name="nic">
+                <br><br><br><br>
+                <lable>Phone Number</lable>
+                <br><br><br><br>
+                <input type="text" name="phoneNumber">
+                <br><br><br><br>
+                <lable>Password</lable>
+                <br><br><br><br>
+                <input type="password" name="password">
+                <br><br><br><br>
+                <button class="btnL btn-6 btn-6l" id="nextButton">Next</button>
+
+                <br><br>
+                
+
+				
+			</div>
+		</div>
+        
+        <script src="js/jquery-1.12.0.min.js"></script>
+		<script src="js/classie.js"></script>
+		<script>
+			 function registerDriver(firstName,lastName,nic,contactNo,password,){
+                
+                $.ajax({
+                  type: "POST",
+                  url: "http://localhost:8000/login",
+                  crossDomain:true,
+                  data: 
+                    {
+                        user:'driver',
+                        firstName:firstName,
+                        lastName:lastName,
+                        nic:nic,
+                        contactNo:contactNo,
+                        password:password
+                    },
+                  dataType: "html"
+                }).done(function(data){
+                    if(data=="1"){
+                        $(location).attr('href', './driver_home.html')
+                    }else if(data=="0"){
+                        $('#wrongPwd').show();
+                    }else if(data=="-1"){
+                        $('#wrongPwd').show();
+                    }
+                });
+
+/*
+                $.getJSON('http://localhost:8000/login', function(){
+                    console.log('data');
+                });
+*/
+            }
+
+            $('#nextButton').on('click',function(){
+                firstName=$('#firstName').val();
+                lastName=$('#lastName').val();
+                nic=$('#nic').val();
+                contactNo=$('#contactNo').val();
+                password=$('#password').val();
+                registerDriver(firstName,lastName,nic,contactNo,password);
+            });
+		</script>
+	</body>
+</html>

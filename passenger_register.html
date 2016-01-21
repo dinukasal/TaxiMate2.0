@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+        <link rel="stylesheet" type="text/css" href="css/component_button.css" />
+        
+	</head>
+	<body style="width: 140%; height:140%">
+		<div id="header">
+            <h>Passenger Register</h>
+        </div>
+        <div class="container">
+			<div class="main" >
+                <br><br>
+                <lable>Name</lable>
+                <br><br><br><br>
+                <input type="text" id="firstName" name="firstName">
+                <input type="text" id="lastName" name="lastName">
+				<br><br><br><br>
+                <lable>Phone Number</lable>
+                <br><br><br><br>
+                <input type="text" id="contactNo" name="phoneNumber">
+                <br><br><br><br>
+                <lable>Password</lable>
+                <br><br><br><br>
+                <input type="password" id="password" name="password">
+                <br><br><br><br>
+                <button class="btnL btn-6 btn-6l" id="nextButton">Next</button>
+				
+			</div>
+		</div>
+        
+        <script src="js/jquery-1.12.0.min.js"></script>
+		<script src="js/classie.js"></script>
+		<script>
+			function registerPassenger(firstName,lastName,contactNo,password){
+                
+                $.ajax({
+                  type: "POST",
+                  url: "http://localhost:8000/register",
+                  crossDomain:true,
+                  data: 
+                    {
+                        user:'passenger',
+                        firstName:firstName,
+                        lastName:lastName,
+                        contactNo:contactNo,
+                        password:password
+                    },
+                  dataType: "html"
+                }).done(function(data){
+                    if(data=="1"){
+                        $(location).attr('href', './passenger_home.html')
+                    }else if(data=="0"){
+                        $('#wrongPwd').show();
+                    }else if(data=="-1"){
+                        $('#wrongPwd').show();
+                    }
+                });
+            }
+
+            $('#nextButton').on('click',function(){
+                firstName=$('#firstName').val();
+                lastName=$('#lastName').val();
+                contactNo=$('#contactNo').val();
+                password=$('#password').val();
+                registerPassenger(firstName,lastName,contactNo,password);
+            });
+		</script>
+	</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+        <link rel="shortcut icon" href="">
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+        <link rel="stylesheet" type="text/css" href="css/component_button.css" />
+	   
+    </head>
+	<body class="spmenu-push" style="width: 140%; height:140%">
+        <div id="header">
+            <div class="main" style="position: relative;"> 
+                <button id="menuButton"  class="btn btn-1 btn-1a" style="position: absolute; left: -40px; top: -20px;"><img src="./img/menu.png"></button>
+                <h>My Trips</h> 
+            </div>    
+        </div>
+                
+		<nav class="spmenu spmenu-vertical spmenu-left" id="spmenu-s1">
+			<h3>Menu</h3>
+			<a href="driver_home.html">Home</a>
+			<a href="driver_myprofile.html">Profile</a>
+			<a href="driver_ratings.html">Ratings and Badges</a>
+			<a href="driver_myrates.html">My Rates</a>
+			<a href="driver_mytrips.html">My Trips</a>
+			<a href="driver_support.html">Support</a>
+			<a href="driver_aboutus.html">About Us</a>
+		</nav>
+		<div class="">
+			<div class="">
+                <div>
+                    <ul id="myTabs"  style="font-size: 3.5em;" class="nav nav-pills" role="tablist">
+                        <li role="presentation" class="active" id="#triphistory">
+                            <a href="#triphistory" aria-controls="triphistory" role="tab" data-toggle="tab">Trip History</a>
+                        </li>
+                        <li role="presentation" id="#bookings">
+                            <a href="#bookings" aria-controls="bookings" role="tab" data-toggle="tab">Bookings</a>
+                        </li>
+                    </ul>
+                    
+                    
+              
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active" id="triphistory">
+                            <div class="listborder" style="position: relative;left: 30px; top: 50px; ">
+                                <p style="position: absolute; left: 10px; top: 00px;font-size: 3.5em;">Charith: 2016/01/07</p>
+                                <p style="position: absolute; left: 10px; top: 75px;font-size: 3.5em;">From :Maharagama</p>
+                                <p style="position: absolute; left: 10px; top: 150px;font-size: 3.5em;">To   :Kottawa</p>
+                                <br><br>
+                                <lable class="btnL btn-6 btn-6l" id="acceptbutton"  style="position: absolute; left: 550px; top: 60px" >Accepted</lable>
+                            </div> 
+                            <div class="listborder" style="position: relative;left: 30px; top: 50px; ">
+                                <p style="position: absolute; left: 10px; top: 00px;font-size: 3.5em;">Dinuka: 2016/01/10</p>
+                                <p style="position: absolute; left: 10px; top: 75px;font-size: 3.5em;">From :Katubedda</p>
+                                <p style="position: absolute; left: 10px; top: 150px;font-size: 3.5em;">To   :Piliyandala</p><br><br>
+                                <lable class="btnL btn-6 btn-6l" id="acceptbutton"  style="position: absolute; left: 550px; top: 60px: " >Accepted</lable>                
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="bookings"><div class="listborder" style="position: relative; left: 30px; top: 50px;">
+                                <p style="position: absolute; left: 10px; top: 00px;">Customer: Thimal</p>
+                                <p style="position: absolute; left: 10px; top: 20px;">Date:22/01/2016 Time:04.30 pm</p>
+                                <p style="position: absolute; left: 10px; top: 40px;">From :Dehiwala</p>
+                                <p style="position: absolute; left: 10px; top: 60px;">To   :Pettah</p>
+                                <br><br>
+                                <lable class="btn btn-6 btn-6l" id="acceptbutton"  style="position: absolute; left: 200px; top: 80px" >Accepted</lable>
+                            </div> 
+                            <div class="listborder" style="position: relative;left: 30px; top: 50px;">
+                                <p style="position: absolute; left: 10px; top: 00px;">Customer: Anushika</p>
+                                <p style="position: absolute; left: 10px; top: 20px;">Date:22/01/2016 Time:11.00 am</p>
+                                <p style="position: absolute; left: 10px; top: 40px;">From :Maradana</p>
+                                <p style="position: absolute; left: 10px; top: 60px;">To   :Wellawatte</p><br><br>
+                                <lable class="btn btn-6 btn-6l" id="acceptbutton"  style="position: absolute; left: 200px; top: 80px" >Accepted</lable>                
+                        </div>
+                    </div>
+			     </div>
+		  </div>
+        
+
+        
+		<script src="js/classie.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script>
+			var menuLeft = document.getElementById( 'spmenu-s1' ),
+				menuButton = document.getElementById( 'menuButton' ),
+				body = document.body;
+
+			menuButton.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'spmenu-push-toright' );
+				classie.toggle( menuLeft, 'spmenu-open' );
+				disableOther( 'menuButton' );
+			};
+            
+            $('#myTabs a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+                console.log("tab clicked");
+            });
+            
+           
+		</script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+          <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	</body>
+</html>

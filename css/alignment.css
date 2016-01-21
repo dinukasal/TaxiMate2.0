@@ -1,0 +1,23 @@
+#container {
+  overflow: hidden;
+  width: 100%;
+  min-height: 36px; /* Remember absolute positioning is outside the page flow! */
+  position: relative;
+}
+#left-element {
+  position: absolute;
+  left: 9px;
+  top: 3px;
+  width: 13px;
+}
+#middle-element {
+  margin: 0 auto;
+  text-align: center;
+  width: 300px;
+}
+#right-element {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 100px;
+}

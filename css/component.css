@@ -1,0 +1,165 @@
+/* General styles for all menus */
+.spmenu {
+	background: #47a3da;
+	position: fixed;
+}
+
+.spmenu h3 {
+	color: #afdefa;
+	font-size: 1.9em;
+	padding: 20px;
+	margin: 0;
+	font-weight: 300;
+	background: #0d77b6;
+}
+
+.spmenu a {
+	display: block;
+	color: #fff;
+	font-size: 3.5em;
+	font-weight: 300;
+}
+
+.spmenu a:hover {
+	background: #258ecd;
+}
+
+.spmenu a:active {
+	background: #afdefa;
+	color: #47a3da;
+}
+
+/* Orientation-dependent styles for the content of the menu */
+
+.spmenu-vertical {
+	width: 400px;
+	height: 100%;
+	top: 0;
+	z-index: 1000;
+}
+
+.spmenu-vertical a {
+	border-bottom: 1px solid #258ecd;
+	padding: 1em;
+}
+
+.spmenu-horizontal {
+	width: 100%;
+	height: 150px;
+	left: 0;
+	z-index: 1000;
+	overflow: hidden;
+}
+
+.spmenu-horizontal h3 {
+	height: 100%;
+	width: 20%;
+	float: left;
+}
+
+.spmenu-horizontal a {
+	float: left;
+	width: 20%;
+	padding: 0.8em;
+	border-left: 1px solid #258ecd;
+}
+
+/* Vertical menu that slides from the left or right */
+
+.spmenu-left {
+	left: -500px;
+}
+
+.spmenu-right {
+	right: -240px;
+}
+
+.spmenu-left.spmenu-open {
+	left: 0px;
+}
+
+.spmenu-right.spmenu-open {
+	right: 0px;
+}
+
+/* Horizontal menu that slides from the top or bottom */
+
+.spmenu-top {
+	top: -150px;
+}
+
+.spmenu-bottom {
+	bottom: -150px;
+}
+
+.spmenu-top.spmenu-open {
+	top: 0px;
+}
+
+.spmenu-bottom.spmenu-open {
+	bottom: 0px;
+}
+
+/* Push classes applied to the body */
+
+.spmenu-push {
+	overflow-x: hidden;
+	position: relative;
+	left: 0;
+}
+
+.spmenu-push-toright {
+	left: 240px;
+}
+
+.spmenu-push-toleft {
+	left: -240px;
+}
+
+/* Transitions */
+
+.spmenu,
+.spmenu-push {
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+/* Example media queries */
+
+@media screen and (max-width: 55.1875em){
+
+	.spmenu-horizontal {
+		font-size: 75%;
+		height: 110px;
+	}
+
+	.spmenu-top {
+		top: -110px;
+	}
+
+	.spmenu-bottom {
+		bottom: -110px;
+	}
+
+}
+
+@media screen and (max-height: 26.375em){
+
+	.spmenu-vertical {
+		font-size: 90%;
+		width: 190px;
+	}
+
+	.spmenu-left,
+	.spmenu-push-toleft {
+		left: -190px;
+	}
+
+	.spmenu-right {
+		right: -190px;
+	}
+
+	.spmenu-push-toright {
+		left: 190px;
+	}
+}

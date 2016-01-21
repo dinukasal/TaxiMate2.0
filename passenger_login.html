@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+        <link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+	   <link rel="stylesheet" type="text/css" href="css/component_button.css" />
+        
+    </head>
+	<body class="spmenu-push" style="width: 140%; height:140%">
+        <div id="header">
+            <div class="main" style="position: relative;"> 
+                
+                <button id="backButton"  class="btn btn-1 btn-1a" style="position: absolute; left: -40px; top: -20px;" onclick="location.href='passenger_index.html';">Back</button>
+                <h>Passenger Login</h>
+            </div>
+        </div>
+		
+         <div class="container" >
+            <div class="main" >
+                 <br><br>
+                <lable>Phone Number</lable>
+                <br><br><br><br>
+                <input type="text" name="user" hidden="true" value="passenger">
+                <input id="contactNo" type="number" name="contactNo">
+                <br><br><br><br>
+                <lable>Password</lable>
+                <br><br><br><br>
+                <input id="password" type="password" name="password">
+                <br><br><br>
+                <br>
+                <div class="alert alert-danger" role="alert" id="wrongPwd" style="display:none;font-color:red
+                ">You entered wrong password or username!</div>
+                <button class="btnL btn-6 btn-6l" id="loginButton"  >Login</button>
+            </div>
+        </div>
+        <script src="js/classie.js"></script>
+        <script src="js/jquery-1.12.0.min.js"></script>
+        <script>
+            function login(contactNo,password){
+                
+                $.ajax({
+                  type: "POST",
+                  url: "http://localhost:8000/login",
+                  crossDomain:true,
+                  data: 
+                    {
+                        user:'passenger',
+                        contactNo:contactNo,
+                        password:password
+                    },
+                  dataType: "html"
+                }).done(function(data){
+                    if(data=="1"){
+                        $(location).attr('href', './passenger_home.html')
+                    }else if(data=="0"){
+                        $('#wrongPwd').show();
+                    }else if(data=="-1"){
+                        $('#wrongPwd').show();
+                    }
+                });
+            }
+
+            $('#loginButton').on('click',function(){
+                contactNo=$('#contactNo').val();
+                password=$('#password').val();
+                login(contactNo,password);
+            });
+        </script>
+	</body>
+</html>

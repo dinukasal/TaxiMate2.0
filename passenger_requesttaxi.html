@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+        <link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+        <link rel="stylesheet" type="text/css" href="css/component_button.css" />
+	   
+    </head>
+	<body class="spmenu-push" style="width: 140%; height: 140%;">
+        <div id="header">
+            <div class="main" style="position: relative;"> 
+                <button id="menuButton"  class="btn btn-1 btn-1a" style="position: absolute; left: -40px; top: -20px;"><img src="./img/menu.png"></button>
+                <h1>Request Taxi</h1>
+            </div>
+            
+        </div>
+		<nav class="spmenu spmenu-vertical spmenu-left" id="spmenu-s1">
+			<h3>Menu</h3>
+            <a href='passenger_home.html'>Home</a>
+			<a href='passenger_myprofile.html'>Profile</a>
+			<a href='passenger_favouritedrivers.html'>Favourite Drivers</a>
+			<a href='passenger_mytrips.html'>My Trips</a>
+			<a href='passenger_support.html'>Support</a>
+			<a href='passenger_aboutus.html'>About Us</a>
+		</nav>
+		<div class="container">
+			<div class="main" id="mainContainer">
+                
+                <! To keep the start and destination hidden>
+                <input type="text" name="startLocation" hidden="true" value="?">
+                <input type="text" name="destination" hidden="true" value="?">
+                
+                <button id="carButton"  class="btn btn-1 btn-1a" style="position: absolute; left: 0px; top: 150px;"><img src="./img/car.png" width="100" height="100"/></button>
+                <button id="tukTukButton"  class="btn btn-1 btn-1a" style="position: absolute; left: 250px; top: 150px;"><img src="./img/tuk%20tuk.png" width="100" height="100"/></button>
+                <button id="vanButton"  class="btn btn-1 btn-1a" style="position: absolute; left: 500px; top: 150px;"><img src="./img/bus.png" width="100" height="100"/></button>
+                
+                
+				<br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+                </div>
+			</div>
+		</div>
+        
+        <script src="js/jquery-1.12.0.min.js"></script>
+		<script src="js/classie.js"></script>
+		<script>
+
+            var star=['<div class="starDiv" style="position: absolute; left: 400px; top: 100px;"><img src="./img/starBlue.png"><img src="./img/starBlue.png"><img src="./img/starBlue.png"><img src="./img/starBlue.png"><img src="./img/starBlack.png"></div>',
+                '<div class="starDiv" style="position: absolute; left: 400px; top: 100px;"><img src="./img/starBlue.png"><img src="./img/starBlue.png"><img src="./img/starBlack.png"><img src="./img/starBlack.png"><img src="./img/starBlack.png"></div>',
+                '<div class="starDiv" style="position: absolute; left: 400px; top: 100px;"><img src="./img/starBlue.png"><img src="./img/starBlue.png"><img src="./img/starBlue.png"><img src="./img/starBlack.png"><img src="./img/starBlack.png"></div>'];
+
+			var menuLeft = document.getElementById( 'spmenu-s1' ),
+				menuButton = document.getElementById( 'menuButton' ),
+				body = document.body;
+
+			menuButton.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'spmenu-push-toright' );
+				classie.toggle( menuLeft, 'spmenu-open' );
+				disableOther( 'menuButton' );
+			};
+
+            var starList
+
+            function getAvailableDrivers(){
+                $.getJSON( "http://localhost:8000/availabledrivers", function( data ) {
+                  var drivers = [];
+                  $.each( data, function( key, value ) {
+                    if(value.specialFare!=''){
+                        fare=value.dayTimeFare;
+                    }
+                    rating =Math.round((value.rating)/2);
+
+                    var $div=$("<div>",{id:"driver"+key,class:'listborder',style:'position:relative;border-radius:10px;width:100%'});
+                    var img=$("<img id=driverImage"+key+">");
+                    img.attr('src','./img/business124.png');
+                    img.attr('width','100');
+                    img.attr('height','100');
+                    var name=$("<h3>",{'style':'position:absolute;left:250px;top:10px',
+                        id:'driverName'+key,padding:'0'});
+                    name.append(value.firstName);
+                    var rate=$("<h3>",{'style':'position:absolute;left:250px;top:60px',
+                        id:'driverRate'+key});
+                    rate.append(fare+"Rs/km");
+                    $div.append(img);
+                    $div.append(name);
+                    $div.append(rate);
+
+                    $div.append("<div class=\"starDiv\" id=key style=\"position: absolute; left: 400px; top: 100px;\">")
+
+                    $div.append('<img border="0" src="./img/heartBlack.png" alt="Favourite" width="64" height="64" style="position: absolute; left: 450px; top: 20px;"/>');
+                    /*
+                    for (var i = 0; i <rating; i++) {
+                        var img=$("<img id=driverImage"+key+">");
+                        img.attr('src','./img/starBlue.png');
+                        $('#'+key).append(img);
+                    };
+
+                    for (var i = 0; i <(5%rating); i++) {
+                        var img=$("<img id=driverImage"+key+">");
+                        img.attr('src','./img/starBlack.png');
+                        $('#'+key).append(img);
+                    };
+                    */
+                    $div.on('click',function(){
+                        alert('ok');
+                    });
+                    $div.append(star[key%3]);
+                    $('#mainContainer').append("<br>");
+                    $('#mainContainer').append($div);
+
+
+                  });
+                 
+                });
+            }
+            $(document).ready(function(){
+                getAvailableDrivers();
+            });
+
+		</script>
+	</body>
+</html>
